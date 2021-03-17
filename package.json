@@ -1,0 +1,56 @@
+{
+  "name": "video-accelerator",
+  "version": "1.0.0",
+  "description": "The Video Accelerator provides a simple way to integrate real-time audio/video into your web application using the Vonage Video platform.",
+  "main": "index.js",
+  "scripts": {
+    "browserify": "browserify -p tinyify build/sdk-wrapper/sdkWrapper.js -o dist/sdk.js",
+    "build": "tsc",
+    "lint": "eslint . --ext .ts",
+    "lint:fix": "eslint . --ext .ts --fix",
+    "prettier:format": "prettier --config .prettierrc '**/*.ts' --write",
+    "test": "mocha -r ts-node/register test/**/*spec.ts --insect"
+  },
+  "keywords": [
+    "webrtc",
+    "opentok",
+    "vonage-video-api",
+    "javascript"
+  ],
+  "author": {
+    "name": "Michael Jolley",
+    "email": "michael.jolley@vonage.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Vonage/video-accelerator.git"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Vonage/video-accelerator/issues"
+  },
+  "homepage": "https://github.com/Vonage/video-accelerator#readme",
+  "dependencies": {},
+  "devDependencies": {
+    "@opentok/client": "^2.19.2",
+    "@types/chai": "^4.2.15",
+    "@types/mocha": "^8.2.1",
+    "@types/node": "^14.14.34",
+    "@types/sinon": "^9.0.11",
+    "@types/sinon-chai": "^3.2.5",
+    "@typescript-eslint/eslint-plugin": "^4.18.0",
+    "@typescript-eslint/parser": "^4.18.0",
+    "browserify": "^17.0.0",
+    "chai": "^4.3.4",
+    "eslint": "^7.22.0",
+    "eslint-config-prettier": "^8.1.0",
+    "eslint-plugin-prettier": "^3.3.1",
+    "mocha": "^8.3.2",
+    "prettier": "^2.2.1",
+    "sinon": "^9.2.4",
+    "sinon-chai": "^3.5.0",
+    "tinyify": "^3.0.0",
+    "ts-node": "^9.1.1",
+    "typescript": "^4.2.3"
+  }
+}
