@@ -4,10 +4,10 @@
   "description": "The Video Accelerator provides a simple way to integrate real-time audio/video into your web application using the Vonage Video platform.",
   "main": "index.js",
   "scripts": {
-    "browserify": "browserify -p tinyify build/sdk-wrapper/sdkWrapper.js -o dist/sdk.js",
+    "browserify": "browserify -p tinyify build/index.js -o dist/videoAccelerator.js",
     "build": "tsc",
-    "lint": "eslint . --ext .ts",
-    "lint:fix": "eslint . --ext .ts --fix",
+    "lint": "eslint ./src --ext .ts",
+    "lint:fix": "eslint ./src --ext .ts --fix",
     "prettier:format": "prettier --config .prettierrc '**/*.ts' --write",
     "test": "mocha -r ts-node/register test/**/*spec.ts --insect"
   },
