@@ -18,7 +18,8 @@ const options = {
         screen: '#subscribers'
       }
     }[pubSub][type];
-  }
+  },
+  appendControl: true
 };
 
 const videoAccelerator = new VideoAccelerator(options);
