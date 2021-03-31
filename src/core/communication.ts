@@ -5,13 +5,13 @@ import {
   StreamEvent,
   StreamType,
   CommunicationOptions
-} from './models';
-import { AcceleratorEvents, SessionEvents } from './enums';
+} from '../models';
+import { AcceleratorEvents, SessionEvents } from '../enums';
 import { VideoAccelerator } from '.';
 import { SDKWrapper } from './sdkWrapper';
-import { defaultCallProperties } from './constants';
-import { dom, properCase } from './util';
-import { log } from './log';
+import { defaultCallProperties } from '../constants';
+import { dom, properCase } from '../util';
+import { log } from '../log';
 
 /**
  *

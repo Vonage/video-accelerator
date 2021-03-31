@@ -1,7 +1,7 @@
 import * as OT from '@opentok/client';
-import { SessionEvents, StreamType } from './enums';
+import { SessionEvents, StreamType } from '../enums';
 
-import { AcceleratorError, Credential } from './models';
+import { AcceleratorError, Credential } from '../models';
 import { State } from './state';
 
 export class SDKWrapper extends State {

@@ -2,7 +2,7 @@
   "name": "video-accelerator",
   "version": "1.0.0",
   "description": "The Video Accelerator provides a simple way to integrate real-time audio/video into your web application using the Vonage Video platform.",
-  "main": "dist/text-chat.js",
+  "main": "dist/videoAccelerator.js",
   "scripts": {
     "browserify": "browserify -p tinyify build/index.js -o dist/videoAccelerator.js",
     "build": "tsc",

@@ -6,7 +6,7 @@ import {
   StreamCollection,
   StreamType,
   AcceleratorError
-} from './models';
+} from '../models';
 
 export class State {
   private connected: boolean;

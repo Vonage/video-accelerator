@@ -17,16 +17,6 @@ The four component packages are:
 - [Screen Sharing] // TODO: Build & document in `/src/screen-sharing`
 - [Text Chat] // TODO: Build & document in `/src/text-chat`
 
-## Sample Applications
-
-There are three sample applications in the samples directory;
-[React](https://github.com/vonage/video-accelerator/tree/main/samples/react),
-[Vue](https://github.com/vonage/video-accelerator/tree/main/samples/samples/vue),
-and [Vanilla](https://github.com/vonage/video-accelerator/tree/main/samples/samples/vanilla).
-Each implement the same functionality using the different frameworks.
-
-// TODO: Build & document the 3 samples
-
 ## Configuration
 
 The Vonage Video Accelerator can be configured in a number of ways, but the

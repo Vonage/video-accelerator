@@ -1,4 +1,4 @@
-import { VideoAccelerator } from '../';
+import { VideoAccelerator } from '..';
 import { AcceleratorCommunicationOptions } from './acceleratorCommunicationOptions';
 import { StreamType } from './streamCollectionSummary';
 
@@ -15,5 +15,5 @@ export class CommunicationOptions {
       data?: unknown,
       streamId?: string
     ) => string | Element
-  ) {}
+  ) { }
 }
