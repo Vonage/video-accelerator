@@ -1,6 +1,6 @@
 import { OTError } from '@opentok/client';
 import { VideoAccelerator } from '../core';
-import { AcceleratorEvents, SessionEvents, TextChatEvents } from '../enums';
+import { AcceleratorEvents, TextChatEvents } from '../enums';
 import {
   Signal,
   TextChatError,
@@ -372,24 +372,24 @@ export default class TextChatAccelerator {
     }
   }
 
-  private handleStreamCreated(
-    event?: OT.Event<'streamCreated', OT.Session> & { stream: OT.Stream }
-  ) {
-    if (
-      event &&
-      event.stream.connection.connectionId !==
-        this.session.connection.connectionId
-    ) {
-      this.remoteParticipant = true;
-      this.hideWaitingMessage();
-    }
-  }
+  // private handleStreamCreated(
+  //   event?: OT.Event<'streamCreated', OT.Session> & { stream: OT.Stream }
+  // ) {
+  //   if (
+  //     event &&
+  //     event.stream.connection.connectionId !==
+  //       this.session.connection.connectionId
+  //   ) {
+  //     this.remoteParticipant = true;
+  //     this.hideWaitingMessage();
+  //   }
+  // }
 
-  private handleStreamDestroyed() {
-    if (this.session.streams.length < 2) {
-      this.remoteParticipant = false;
-    }
-  }
+  // private handleStreamDestroyed() {
+  //   if (this.session.streams.length < 2) {
+  //     this.remoteParticipant = false;
+  //   }
+  // }
 
   private appendControl() {
     const feedControls = document.querySelector(
@@ -453,14 +453,14 @@ export default class TextChatAccelerator {
 
   private addEventListeners() {
     if (this.videoAccelerator) {
-      this.videoAccelerator.on(
-        SessionEvents.StreamCreated,
-        this.handleStreamCreated
-      );
-      this.videoAccelerator.on(
-        SessionEvents.StreamDestroyed,
-        this.handleStreamDestroyed
-      );
+      // this.videoAccelerator.on(
+      //   SessionEvents.StreamCreated,
+      //   this.handleStreamCreated
+      // );
+      // this.videoAccelerator.on(
+      //   SessionEvents.StreamDestroyed,
+      //   this.handleStreamDestroyed
+      // );
 
       this.videoAccelerator.on(AcceleratorEvents.JoinSession, function () {
         if (!this.options.alwaysOpen) {
@@ -483,11 +483,11 @@ export default class TextChatAccelerator {
         }
       });
     } else {
-      this.session.on(SessionEvents.StreamCreated, this.handleStreamCreated);
-      this.session.on(
-        SessionEvents.StreamDestroyed,
-        this.handleStreamDestroyed
-      );
+      // this.session.on(SessionEvents.StreamCreated, this.handleStreamCreated);
+      // this.session.on(
+      //   SessionEvents.StreamDestroyed,
+      //   this.handleStreamDestroyed
+      // );
     }
 
     this.session.on('connectionCreated', this.handleConnectionCreated);
@@ -496,7 +496,7 @@ export default class TextChatAccelerator {
      * We need to check for remote participants in case we were the last party to join and
      * the session event fired before the text chat component was initialized.
      */
-    this.handleStreamCreated();
+    //this.handleStreamCreated();
   }
 }
 

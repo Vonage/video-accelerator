@@ -193,12 +193,14 @@ export class SDKWrapper extends State {
    * @param publisher An OpenTok publisher object
    */
   unpublish(publisher: OT.Publisher): void {
-    const type = publisher.stream.videoType as StreamType;
+    if (publisher.stream) {
+      const type = publisher.stream.videoType as StreamType;
+      this.removePublisher(type, publisher);
+    }
     const session = this.getSession();
     if (session) {
       session.unpublish(publisher);
     }
-    this.removePublisher(type, publisher);
   }
 
   /**

@@ -9,7 +9,7 @@ import {
   TextChatSender
 } from '../models';
 import { log } from '../log';
-import { AcceleratorEvents, Packages, SessionEvents } from '../enums';
+import { AcceleratorEvents, SessionEvents } from '../enums';
 import { Communication } from './communication';
 import TextChatAccelerator from '../text-chat';
 

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Video Accelerator Sample</title>
+  <script src="https://static.opentok.com/v2/js/opentok.min.js"></script>
+  <script src="/dist/videoAccelerator.js"></script>
+  <link href="/styles/main.css" rel="stylesheet">
+</head>
+
+<body>
+
+  <header>
+    <img src="images/logo.png" alt="Vonage" />
+    <div>Video Accelerator Sample App</div>
+  </header>
+
+  <main>
+
+  </main>
+
+  <footer>
+    <div class="controls">
+      <a id="join" class="circle" title="Join Session">J</a>
+      <a id="audio" class="circle hidden" title="Toggle Audio">A</a>
+      <a id="video" class="circle hidden" title="Toggle Video">V</a>
+      <a id="leave" class="circle hidden" title="Leave Session">L</a>
+    </div>
+  </footer>
+
+  <script type="text/javascript">
+
+    let videoAccelerator;
+    let localAudio = true, localVideo = true;
+    let joined = false;
+
+    function bindControls() {
+      document.getElementById('join').onclick = join;
+      document.getElementById('leave').onclick = leave;
+      document.getElementById('audio').onclick = toggleAV;
+      document.getElementById('video').onclick = toggleAV;
+    }
+
+    function toggleAV(event) {
+      const el = event.target;
+      if (el.classList.contains('disabled')) {
+        el.classList.remove('disabled');
+      } else {
+        el.classList.add('disabled');
+      }
+      if (el.id === 'audio') {
+        localAudio = !localAudio;
+        videoAccelerator.toggleLocalAudio(localAudio);
+      } else {
+        localVideo = !localVideo;
+        videoAccelerator.toggleLocalVideo(localVideo);
+      }
+    }
+
+    function join() {
+      videoAccelerator.join({})
+        .then(() => {
+          const controls = document.getElementsByClassName('circle');
+          for (const control of controls) {
+            control.classList.remove('hidden');
+          }
+          document.getElementById('join').classList.add('hidden');
+        });
+    }
+
+    function leave() {
+      videoAccelerator.leave()
+        .then(() => {
+          const controls = document.getElementsByClassName('circle');
+          for (const control of controls) {
+            control.classList.add('hidden');
+          }
+          document.getElementById('join').classList.remove('hidden');
+        });
+    }
+
+    fetch('/config').then(async (response) => {
+
+      const options = {
+        credentials: await response.json()
+      }
+
+      videoAccelerator = new VideoAccelerator(options);
+
+      bindControls();
+
+      await videoAccelerator.connect();
+    });
+  </script>
+</body>
+
+</html>

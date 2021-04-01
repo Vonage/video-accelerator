@@ -1,14 +1,12 @@
 import { StreamType } from '../enums';
 import { AcceleratorCommunicationOptions } from './acceleratorCommunicationOptions';
 import { Credential } from './credential';
-import { Packages } from './packages';
 import { TextChatOptions } from './text-chat';
 
 export class AcceleratorOptions {
   constructor(
     public credentials: Credential,
     public controlsContainer?: string | Element,
-    public packages: Packages = new Packages(),
     public streamContainers?: (
       pubSub: 'publisher' | 'subscriber',
       type: StreamType,

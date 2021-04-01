@@ -297,7 +297,8 @@ export class Communication {
   endCall = async (): Promise<void> => {
     const { publishers, subscribers } = this.VideoSDK.getPubSub();
 
-    const unpublish = (publisher) => this.VideoSDK.unpublish(publisher);
+    const unpublish = (publisher) =>
+      publisher && this.VideoSDK.unpublish(publisher);
 
     Object.values(publishers.camera).forEach(unpublish);
     Object.values(publishers.screen).forEach(unpublish);
