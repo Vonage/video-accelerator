@@ -18,6 +18,7 @@ export class AcceleratorOptions {
     // public annotation?: CoreAnnotationOptions,
     // public archiving?: CoreArchivingOptions,
     public communication?: AcceleratorCommunicationOptions,
-    public textChat?: TextChatOptions // public screenSharing?: CoreScreenSharingOptions
+    public textChat?: TextChatOptions 
+    // public screenSharing?: CoreScreenSharingOptions
   ) {}
 }

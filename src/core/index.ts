@@ -269,7 +269,7 @@ export class VideoAccelerator {
             controlsContainer as string,
             appendControl,
             streamContainers,
-            new TextChatSender('Joe'),
+            options.textChat?.sender,
             options.textChat?.textChatContainer,
             options.textChat?.waitingMessage,
             options.textChat?.limitCharacterMessage,
