@@ -45,7 +45,7 @@ footer .controls {
   padding: 0 10px;
 }
 
-footer .controls .circle {
+footer .controls .acc-video-control {
   border-radius: 25px;
   height: 50px;
   width: 50px;
@@ -58,15 +58,15 @@ footer .controls .circle {
   font-weight: bold;
 }
 
-footer .controls .circle.hidden {
+footer .controls .acc-video-control.hidden {
   display: none;
 }
 
-footer .controls .circle:not(:last-child) {
+footer .controls .acc-video-control:not(:last-child) {
   margin-right: 10px;
 }
 
-footer .controls .circle.disabled {
+footer .controls .acc-video-control.disabled {
   background-color: rgba(0, 0, 0, .5);
   color: rgba(255, 255,255, .5);
 }

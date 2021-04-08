@@ -6,7 +6,7 @@ export abstract class dom {
    * Returns document.querySelector
    * @param arg selector to query for
    */
-  public static query(arg: string): Element | Element[] | undefined {
+  public static query(arg: string): Element | undefined {
     return document.querySelector(arg);
   }
 

@@ -23,11 +23,11 @@
   </main>
 
   <footer>
-    <div class="controls">
-      <a id="join" class="circle" title="Join Session">J</a>
-      <a id="audio" class="circle hidden" title="Toggle Audio">A</a>
-      <a id="video" class="circle hidden" title="Toggle Video">V</a>
-      <a id="leave" class="circle hidden" title="Leave Session">L</a>
+    <div id="accVideoControls" class="controls">
+      <a id="accJoin" class="acc-video-control" title="Join Session">J</a>
+      <a id="accToggleLocalAudio" class="acc-video-control hidden" title="Toggle Audio">A</a>
+      <a id="accToggleLocalVideo" class="acc-video-control hidden" title="Toggle Video">V</a>
+      <a id="accLeave" class="acc-video-control hidden" title="Leave Session">L</a>
     </div>
   </footer>
 
@@ -38,10 +38,10 @@
     let joined = false;
 
     function bindControls() {
-      document.getElementById('join').onclick = join;
-      document.getElementById('leave').onclick = leave;
-      document.getElementById('audio').onclick = toggleAV;
-      document.getElementById('video').onclick = toggleAV;
+      document.getElementById('accJoin').onclick = join;
+      document.getElementById('accLeave').onclick = leave;
+      document.getElementById('accToggleLocalAudio').onclick = toggleAV;
+      document.getElementById('accToggleLocalVideo').onclick = toggleAV;
     }
 
     function toggleAV(event) {
@@ -51,7 +51,7 @@
       } else {
         el.classList.add('disabled');
       }
-      if (el.id === 'audio') {
+      if (el.id === 'accToggleLocalAudio') {
         localAudio = !localAudio;
         videoAccelerator.toggleLocalAudio(localAudio);
       } else {
@@ -63,7 +63,7 @@
     function join() {
       videoAccelerator.join({})
         .then(() => {
-          const controls = document.getElementsByClassName('circle');
+          const controls = document.getElementsByClassName('acc-video-control');
           for (const control of controls) {
             control.classList.remove('hidden');
           }
@@ -74,7 +74,7 @@
     function leave() {
       videoAccelerator.leave()
         .then(() => {
-          const controls = document.getElementsByClassName('circle');
+          const controls = document.getElementsByClassName('acc-video-control');
           for (const control of controls) {
             control.classList.add('hidden');
           }

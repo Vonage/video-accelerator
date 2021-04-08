@@ -12,12 +12,18 @@ import { log } from '../log';
 import { AcceleratorEvents, SessionEvents } from '../enums';
 import { Communication } from './communication';
 import TextChatAccelerator from '../text-chat';
+import ScreenSharingAccelerator from '../screen-sharing';
+import AnnotationAccelerator from '../annotation';
+import ArchivingAccelerator from '../archiving';
 
 export class VideoAccelerator {
   private VideoSDK: SDKWrapper;
   private eventListeners: Record<string, Set<(event: unknown) => void>>;
   private communication: Communication;
   private textChat?: TextChatAccelerator;
+  private screenShare?: ScreenSharingAccelerator;
+  private annotation?: AnnotationAccelerator;
+  private archiving?: ArchivingAccelerator;
 
   constructor(private options: AcceleratorOptions) {
     this.VideoSDK = new SDKWrapper(
@@ -211,7 +217,7 @@ export class VideoAccelerator {
    * @param event The name of the event
    * @param data Data to be passed to callback functions
    */
-  triggerEvent = (event: string, data: unknown): void => {
+  triggerEvent = (event: string, data?: unknown): void => {
     const eventCallbacks = this.eventListeners[event];
     if (!eventCallbacks) {
       this.registerEvents(event);
@@ -312,7 +318,7 @@ export class VideoAccelerator {
   };
 
   // setupExternalAnnotation = async (): Promise<void> =>
-  //   await this.annotation.start(this.OpenTokSDK.getSession(), {
+  //   await this.annotation.start(this.getSession(), {
   //     screensharing: true
   //   });
 

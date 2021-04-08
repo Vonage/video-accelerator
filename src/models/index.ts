@@ -9,4 +9,7 @@ export * from './streamCollection';
 export * from './streamCollectionSummary';
 export * from './streamEvent';
 
+export * from './annotation';
+export * from './archiving';
 export * from './text-chat';
+export * from './screen-sharing';
