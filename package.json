@@ -9,7 +9,7 @@
     "lint": "eslint ./src --ext .ts",
     "lint:fix": "eslint ./src --ext .ts --fix",
     "prettier:format": "prettier --config .prettierrc '**/*.ts' --write",
-    "test": "mocha -r ts-node/register test/**/*spec.ts --insect"
+    "test": "mocha -r ts-node/register test/**/*test.ts --insect"
   },
   "keywords": [
     "webrtc",
