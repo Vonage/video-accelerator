@@ -1,6 +1,6 @@
 import { VideoAccelerator } from '../../core';
 import { StreamType } from '../../enums';
-import { TextChatSender } from './TextChatSender';
+import { TextChatSender } from './textChatSender';
 
 export class TextChatOptions {
   constructor(
