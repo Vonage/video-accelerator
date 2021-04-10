@@ -1,4 +1,3 @@
-import { ok } from 'node:assert';
 import { VideoAccelerator } from '../core';
 import { ArchivingEvents } from '../enums';
 import { ArchivingOptions } from '../models';
