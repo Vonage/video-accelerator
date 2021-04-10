@@ -67,73 +67,73 @@ export default class ScreenSharingAccelerator {
     }
   };
 
-  /**
-   * Create a publisher for the screen.  If we're using annotation, we first need
-   * to create the annotation window and get a reference to its annotation container
-   * element so that we can pass it to the initPublisher function.
-   * @returns {promise} < Resolve: [Object] Container element for annotation in external window >
-   */
-  private initPublisher = async (
-    publisherOptions: OT.PublisherProperties
-  ): Promise<unknown> => {
-    const createPublisher = async (publisherDiv): Promise<any> => {
-      const getContainer = () => {
-        if (publisherDiv) {
-          return publisherDiv;
-        }
-        if (typeof _this.screenSharingContainer === 'function') {
-          return document.querySelector(
-            _this.screenSharingContainer('publisher', 'screen')
-          );
-        } else {
-          return _this.screenSharingContainer;
-        }
-      };
+  // /**
+  //  * Create a publisher for the screen.  If we're using annotation, we first need
+  //  * to create the annotation window and get a reference to its annotation container
+  //  * element so that we can pass it to the initPublisher function.
+  //  * @returns {promise} < Resolve: [Object] Container element for annotation in external window >
+  //  */
+  // private initPublisher = async (
+  //   publisherOptions: OT.PublisherProperties
+  // ): Promise<unknown> => {
+  //   const createPublisher = async (publisherDiv): Promise<any> => {
+  //     const getContainer = () => {
+  //       if (publisherDiv) {
+  //         return publisherDiv;
+  //       }
+  //       if (typeof _this.screenSharingContainer === 'function') {
+  //         return document.querySelector(
+  //           _this.screenSharingContainer('publisher', 'screen')
+  //         );
+  //       } else {
+  //         return _this.screenSharingContainer;
+  //       }
+  //     };
 
-      const container = getContainer();
+  //     const container = getContainer();
 
-      const properties = Object.assign(
-        {},
-        _this.localScreenProperties || _defaultScreenProperties,
-        publisherOptions
-      );
+  //     const properties = Object.assign(
+  //       {},
+  //       _this.localScreenProperties || _defaultScreenProperties,
+  //       publisherOptions
+  //     );
 
-      _this.publisher = OT.initPublisher(
-        container,
-        properties,
-        function (error) {
-          if (error) {
-            _triggerEvent('screenSharingError', error);
-            innerDeferred.reject(
-              _.extend(_.omit(error, 'messsage'), {
-                message: 'Error starting the screen sharing'
-              })
-            );
-          } else {
-            _this.publisher.on('mediaStopped', function () {
-              end();
-            });
-            innerDeferred.resolve();
-          }
-        }
-      );
+  //     _this.publisher = OT.initPublisher(
+  //       container,
+  //       properties,
+  //       function (error) {
+  //         if (error) {
+  //           _triggerEvent('screenSharingError', error);
+  //           innerDeferred.reject(
+  //             _.extend(_.omit(error, 'messsage'), {
+  //               message: 'Error starting the screen sharing'
+  //             })
+  //           );
+  //         } else {
+  //           _this.publisher.on('mediaStopped', function () {
+  //             end();
+  //           });
+  //           innerDeferred.resolve();
+  //         }
+  //       }
+  //     );
 
-      return innerDeferred.promise();
-    };
+  //     return innerDeferred.promise();
+  //   };
 
-    if (
-      this.videoAccelerator &&
-      this.options.useAnnotation &&
-      this.options.useExternalWindow
-    ) {
-      this.annotationWindow = await this.videoAccelerator.setupExternalAnnotation();
-      if (this.annotationWindow) {
-        const annotationElements = this.annotationWindow.createContainerElements();
-        await createPublisher(annotationElements.publisher);
-        return annotationElements.annotation;
-      }
-    } else {
-      await createPublisher();
-    }
-  };
+  //   if (
+  //     this.videoAccelerator &&
+  //     this.options.useAnnotation &&
+  //     this.options.useExternalWindow
+  //   ) {
+  //     this.annotationWindow = await this.videoAccelerator.setupExternalAnnotation();
+  //     if (this.annotationWindow) {
+  //       const annotationElements = this.annotationWindow.createContainerElements();
+  //       await createPublisher(annotationElements.publisher);
+  //       return annotationElements.annotation;
+  //     }
+  //   } else {
+  //     await createPublisher();
+  //   }
+  // };
 }
