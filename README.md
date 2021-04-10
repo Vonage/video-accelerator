@@ -1,5 +1,7 @@
 # Vonage Video Accelerators
 
+[![CI](https://github.com/Vonage/video-accelerator/actions/workflows/CI.yml/badge.svg)](https://github.com/Vonage/video-accelerator/actions/workflows/CI.yml)
+
 The Video Accelerators provide an easy integration for the Vonage Video API.
 Whether you've already built your application using the Video API or are just
 getting started, Vonage Video Accelerators help you implement the functionality

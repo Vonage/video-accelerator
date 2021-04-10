@@ -1,6 +1,6 @@
 {
-  "name": "video-accelerator",
-  "version": "1.0.0",
+  "name": "@vonage/video-accelerator",
+  "version": "0.0.1",
   "description": "The Video Accelerator provides a simple way to integrate real-time audio/video into your web application using the Vonage Video platform.",
   "main": "dist/videoAccelerator.js",
   "scripts": {

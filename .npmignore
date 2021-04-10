@@ -1,4 +1,4 @@
 .babelrc
 node_modules
-test/coverage
+test
 npm-debug.log
